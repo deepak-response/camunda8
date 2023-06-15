@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="Definitions_19i82np" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Web Modeler" exporterVersion="a3c2611" camunda:diagramRelationId="0749b2cf-f1c4-4a4d-825f-bbcfacc8676e" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.2.0">
+  <decision id="customer_eligibility_check" name="Customer Eligibility Check">
+    <decisionTable id="DecisionTable_0plax61" hitPolicy="FIRST">
+      <input id="Input_1">
+        <inputExpression id="InputExpression_1" typeRef="number">
+          <text>age</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0esnzvh">
+        <inputExpression id="LiteralExpression_116plyl" typeRef="number">
+          <text>salary</text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" name="isEligible" typeRef="string" />
+      <rule id="DecisionRule_067voe6">
+        <description>Reject - Minimum Age Criteria</description>
+        <inputEntry id="UnaryTests_0borjto">
+          <text>&lt; 18</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_05q0ht1">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1dds281">
+          <text>"no"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1kbl45v">
+        <description>Reject - Maximum Age Criteria</description>
+        <inputEntry id="UnaryTests_0iygdh9">
+          <text>&gt; 65</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1sdl54g">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09fotn9">
+          <text>"no"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1h4uw1v">
+        <description>Reject - Minimum Salary Criteria</description>
+        <inputEntry id="UnaryTests_05piji7">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0r7so34">
+          <text>&lt; 5000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1v0i8sf">
+          <text>"no"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1rsydx7">
+        <description>Approved</description>
+        <inputEntry id="UnaryTests_1lm8h1n">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vv90f8">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0gz2lr7">
+          <text>"yes"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="customer_eligibility_check">
+        <dc:Bounds height="80" width="180" x="160" y="100" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 2,
+  "components": [
+    {
+      "text": "# You Win Who's 50!",
+      "type": "text",
+      "id": "Field_1pdzieu"
+    },
+    {
+      "label": "Your Guess Was Correct",
+      "type": "textfield",
+      "id": "Field_1xje4ma",
+      "key": "celebName"
+    },
+    {
+      "label": "Message",
+      "type": "textfield",
+      "id": "Field_046rn4h",
+      "key": "response"
+    }
+  ],
+  "type": "default",
+  "id": "winWhosFifty",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0"
+}

@@ -1,0 +1,76 @@
+{
+  "components": [
+    {
+      "label": "ShipmentId",
+      "type": "number",
+      "layout": {
+        "row": "Row_1ojwwur",
+        "columns": null
+      },
+      "id": "Field_0nb20ic",
+      "key": "shipmentId",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Order Item",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1wc4z1w",
+        "columns": null
+      },
+      "id": "Field_0dv7kfa",
+      "key": "orderItem",
+      "description": "Item Description",
+      "disabled": true
+    },
+    {
+      "label": "Amount",
+      "type": "number",
+      "layout": {
+        "row": "Row_1wc4z1w",
+        "columns": null
+      },
+      "id": "Field_0wo2iq9",
+      "key": "amount",
+      "description": "Rs",
+      "disabled": true
+    },
+    {
+      "values": [
+        {
+          "label": "UPI",
+          "value": "upi"
+        },
+        {
+          "label": "Card",
+          "value": "card"
+        },
+        {
+          "label": "Cash",
+          "value": "cash"
+        }
+      ],
+      "label": "Payment Type",
+      "type": "radio",
+      "layout": {
+        "row": "Row_0uyvj7c",
+        "columns": null
+      },
+      "id": "Field_1q9pk0x",
+      "key": "paymentType",
+      "defaultValue": "cash",
+      "disabled": true
+    }
+  ],
+  "schemaVersion": 9,
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "126db16"
+  },
+  "type": "default",
+  "id": "Form_bf9741eb-beff-4c8c-9d15-b31898b767c9",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0"
+}

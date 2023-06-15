@@ -1,0 +1,56 @@
+{
+  "components": [
+    {
+      "label": "Age",
+      "type": "number",
+      "layout": {
+        "row": "Row_0soxo2r",
+        "columns": null
+      },
+      "id": "Field_1tp63fk",
+      "key": "age",
+      "disabled": true
+    },
+    {
+      "label": "Salary",
+      "type": "number",
+      "layout": {
+        "row": "Row_0soxo2r",
+        "columns": null
+      },
+      "id": "Field_0i6020x",
+      "key": "salary",
+      "disabled": true
+    },
+    {
+      "label": "Customer Eligibility",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0d58g41",
+        "columns": null
+      },
+      "id": "Field_0klgo19",
+      "key": "isCustomerEligible",
+      "disabled": true
+    },
+    {
+      "label": "Comments",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_14uf5sy",
+        "columns": null
+      },
+      "id": "Field_0al6skq",
+      "key": "comments"
+    }
+  ],
+  "schemaVersion": 8,
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "a3c2611"
+  },
+  "type": "default",
+  "id": "Form_4b26afae-c5ea-4185-9065-6c8ffe5d36c6",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0"
+}

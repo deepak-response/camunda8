@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Web Modeler" exporterVersion="f804007" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.2.0" camunda:diagramRelationId="353a5c79-536f-4648-97ba-a1aa60b94b3e">
+  <bpmn:process id="Process_76e71a50-dfc4-4022-8706-155398a5c7a6" isExecutable="true">
+    <bpmn:extensionElements>
+      <zeebe:userTaskForm id="userTaskForm_29efk6l">{
+  "components": [
+    {
+      "label": "First Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1xjxol1",
+        "columns": null
+      },
+      "id": "Field_0m0yu5e",
+      "key": "firstName",
+      "description": "Enter Maiden Name",
+      "validate": {
+        "required": true,
+        "maxLength": 20
+      }
+    },
+    {
+      "label": "Last Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1xjxol1",
+        "columns": null
+      },
+      "id": "Field_0duroqt",
+      "key": "lastName"
+    },
+    {
+      "label": "Salary",
+      "type": "number",
+      "layout": {
+        "row": "Row_18lbpse",
+        "columns": null
+      },
+      "id": "Field_1tx2b56",
+      "key": "salary",
+      "description": "Gross Income (INR)",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Age",
+      "type": "number",
+      "layout": {
+        "row": "Row_18lbpse",
+        "columns": null
+      },
+      "id": "Field_1map21u",
+      "key": "age",
+      "description": "Yrs.",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "values": [
+        {
+          "label": "India",
+          "value": "IND"
+        },
+        {
+          "label": "Expat",
+          "value": "EXP"
+        }
+      ],
+      "label": "Nationality",
+      "type": "select",
+      "layout": {
+        "row": "Row_1vnu6dx",
+        "columns": null
+      },
+      "id": "Field_1eggp1d",
+      "key": "nationality",
+      "defaultValue": "value",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "values": [
+        {
+          "label": "Yes",
+          "value": "true"
+        },
+        {
+          "label": "No",
+          "value": "false"
+        }
+      ],
+      "label": "Are you new Customer",
+      "type": "radio",
+      "layout": {
+        "row": "Row_0k2gdkl",
+        "columns": null
+      },
+      "id": "Field_0t2873y",
+      "key": "isNewCustomer",
+      "defaultValue": "false"
+    }
+  ],
+  "schemaVersion": 9,
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "126db16"
+  },
+  "type": "default",
+  "id": "Form_5cb787dc-7b34-4d79-947a-572bcd63ee6c",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0"
+}</zeebe:userTaskForm>
+    </bpmn:extensionElements>
+    <bpmn:startEvent id="StartEvent_1" name="Start Process">
+      <bpmn:outgoing>Flow_024xvtv</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_024xvtv" sourceRef="StartEvent_1" targetRef="getCustomerDetailsTask" />
+    <bpmn:userTask id="getCustomerDetailsTask" name="Get Customer Details">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_29efk6l" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_024xvtv</bpmn:incoming>
+      <bpmn:outgoing>Flow_1hlf8sw</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_1hlf8sw" sourceRef="getCustomerDetailsTask" targetRef="Gateway_0ho392y" />
+    <bpmn:inclusiveGateway id="Gateway_0ho392y" name="Check Min Salary?">
+      <bpmn:incoming>Flow_1hlf8sw</bpmn:incoming>
+      <bpmn:outgoing>Flow_17sapw5</bpmn:outgoing>
+      <bpmn:outgoing>Flow_08a2q72</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1vst4e1</bpmn:outgoing>
+    </bpmn:inclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_17sapw5" name="&#62;5000" sourceRef="Gateway_0ho392y" targetRef="Activity_1szupea">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=salary&gt;=5000</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_08a2q72" name="&#60;1000" sourceRef="Gateway_0ho392y" targetRef="Activity_051fzs4">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=salary&lt;1000</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1vst4e1" name="&#62;1000" sourceRef="Gateway_0ho392y" targetRef="Activity_0ggwkfm">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=salary&gt;=1000</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:manualTask id="Activity_0ggwkfm" name="Eligible for Gold Card">
+      <bpmn:incoming>Flow_1vst4e1</bpmn:incoming>
+      <bpmn:outgoing>Flow_0io5ppv</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:manualTask id="Activity_1szupea" name="Eligible for Platinum Card">
+      <bpmn:incoming>Flow_17sapw5</bpmn:incoming>
+      <bpmn:outgoing>Flow_0eei00h</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:manualTask id="Activity_051fzs4" name="Eligible for Basic Card">
+      <bpmn:incoming>Flow_08a2q72</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ph5stx</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:sequenceFlow id="Flow_0eei00h" sourceRef="Activity_1szupea" targetRef="Event_1lmjdek" />
+    <bpmn:endEvent id="Event_1lmjdek" name="Process Platinum Card">
+      <bpmn:incoming>Flow_0eei00h</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:endEvent id="Event_0xoufxb" name="Process Basic Card">
+      <bpmn:incoming>Flow_0ph5stx</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0ph5stx" sourceRef="Activity_051fzs4" targetRef="Event_0xoufxb" />
+    <bpmn:endEvent id="Event_1lovedb" name="Process Gold Card">
+      <bpmn:incoming>Flow_0io5ppv</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0io5ppv" sourceRef="Activity_0ggwkfm" targetRef="Event_1lovedb" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_76e71a50-dfc4-4022-8706-155398a5c7a6">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="150" y="220" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="135" y="263" width="67" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0o7ilwz_di" bpmnElement="getCustomerDetailsTask">
+        <dc:Bounds x="240" y="198" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_11guvlz_di" bpmnElement="Gateway_0ho392y">
+        <dc:Bounds x="435" y="213" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="404" y="263" width="52" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1e8elue_di" bpmnElement="Activity_0ggwkfm">
+        <dc:Bounds x="580" y="40" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1u82ynz_di" bpmnElement="Activity_1szupea">
+        <dc:Bounds x="580" y="198" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_07gh8uv_di" bpmnElement="Activity_051fzs4">
+        <dc:Bounds x="580" y="310" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1lmjdek_di" bpmnElement="Event_1lmjdek">
+        <dc:Bounds x="782" y="220" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="757" y="263" width="86" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0xoufxb_di" bpmnElement="Event_0xoufxb">
+        <dc:Bounds x="782" y="332" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="765" y="375" width="70" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1lovedb_di" bpmnElement="Event_1lovedb">
+        <dc:Bounds x="782" y="62" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="767" y="105" width="67" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_024xvtv_di" bpmnElement="Flow_024xvtv">
+        <di:waypoint x="186" y="238" />
+        <di:waypoint x="240" y="238" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1hlf8sw_di" bpmnElement="Flow_1hlf8sw">
+        <di:waypoint x="340" y="238" />
+        <di:waypoint x="435" y="238" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_17sapw5_di" bpmnElement="Flow_17sapw5">
+        <di:waypoint x="485" y="238" />
+        <di:waypoint x="580" y="238" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="517" y="220" width="31" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_08a2q72_di" bpmnElement="Flow_08a2q72">
+        <di:waypoint x="460" y="263" />
+        <di:waypoint x="460" y="350" />
+        <di:waypoint x="580" y="350" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="484" y="323" width="31" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1vst4e1_di" bpmnElement="Flow_1vst4e1">
+        <di:waypoint x="460" y="213" />
+        <di:waypoint x="460" y="80" />
+        <di:waypoint x="580" y="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="494" y="63" width="31" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0eei00h_di" bpmnElement="Flow_0eei00h">
+        <di:waypoint x="680" y="238" />
+        <di:waypoint x="782" y="238" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ph5stx_di" bpmnElement="Flow_0ph5stx">
+        <di:waypoint x="680" y="350" />
+        <di:waypoint x="782" y="350" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0io5ppv_di" bpmnElement="Flow_0io5ppv">
+        <di:waypoint x="680" y="80" />
+        <di:waypoint x="782" y="80" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

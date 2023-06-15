@@ -1,0 +1,40 @@
+{
+  "components": [
+    {
+      "label": "Age",
+      "type": "number",
+      "layout": {
+        "row": "Row_16iwe55",
+        "columns": null
+      },
+      "id": "Field_0b0jarv",
+      "key": "age",
+      "description": "in Years",
+      "defaultValue": 18,
+      "validate": {
+        "min": 1,
+        "max": 99
+      }
+    },
+    {
+      "label": "Salary",
+      "type": "number",
+      "layout": {
+        "row": "Row_16iwe55",
+        "columns": null
+      },
+      "id": "Field_01z8w85",
+      "key": "salary",
+      "description": "in Rupees"
+    }
+  ],
+  "schemaVersion": 8,
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "a3c2611"
+  },
+  "type": "default",
+  "id": "demoFormAge",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0"
+}

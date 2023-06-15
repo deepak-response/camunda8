@@ -1,0 +1,165 @@
+{
+  "components": [
+    {
+      "label": "First Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1xjxol1",
+        "columns": null
+      },
+      "id": "Field_0m0yu5e",
+      "key": "firstName",
+      "description": "Enter Maiden Name",
+      "validate": {
+        "required": true,
+        "maxLength": 20
+      },
+      "disabled": true,
+      "readonly": false
+    },
+    {
+      "label": "Last Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1xjxol1",
+        "columns": null
+      },
+      "id": "Field_0duroqt",
+      "key": "lastName",
+      "readonly": false,
+      "disabled": true
+    },
+    {
+      "label": "Salary",
+      "type": "number",
+      "layout": {
+        "row": "Row_18lbpse",
+        "columns": null
+      },
+      "id": "Field_1tx2b56",
+      "key": "salary",
+      "description": "Gross Income (INR)",
+      "validate": {
+        "required": true
+      },
+      "readonly": false,
+      "disabled": true
+    },
+    {
+      "label": "Age",
+      "type": "number",
+      "layout": {
+        "row": "Row_18lbpse",
+        "columns": null
+      },
+      "id": "Field_1map21u",
+      "key": "age",
+      "description": "Yrs.",
+      "validate": {
+        "required": true
+      },
+      "readonly": false,
+      "disabled": true
+    },
+    {
+      "values": [
+        {
+          "label": "India",
+          "value": "IND"
+        },
+        {
+          "label": "Expat",
+          "value": "EXP"
+        }
+      ],
+      "label": "Nationality",
+      "type": "select",
+      "layout": {
+        "row": "Row_1vnu6dx",
+        "columns": null
+      },
+      "id": "Field_1eggp1d",
+      "key": "nationality",
+      "defaultValue": "value",
+      "validate": {
+        "required": true
+      },
+      "readonly": false,
+      "disabled": true
+    },
+    {
+      "values": [
+        {
+          "label": "Yes",
+          "value": "true"
+        },
+        {
+          "label": "No",
+          "value": "false"
+        }
+      ],
+      "label": "Are you new Customer",
+      "type": "radio",
+      "layout": {
+        "row": "Row_0k2gdkl",
+        "columns": null
+      },
+      "id": "Field_0t2873y",
+      "key": "isNewCustomer",
+      "defaultValue": "false",
+      "readonly": false,
+      "disabled": true
+    },
+    {
+      "values": [
+        {
+          "label": "Approve",
+          "value": "approve"
+        },
+        {
+          "label": "Reject",
+          "value": "reject"
+        }
+      ],
+      "label": "Review Outcome",
+      "type": "radio",
+      "layout": {
+        "row": "Row_0k2gdkl",
+        "columns": null
+      },
+      "id": "Field_05jm44q",
+      "key": "reviewOutcome",
+      "defaultValue": "value"
+    },
+    {
+      "label": "Comments",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_17wa2da",
+        "columns": null
+      },
+      "id": "Field_1b4tinc",
+      "key": "comments"
+    },
+    {
+      "action": "submit",
+      "label": "Submit",
+      "type": "button",
+      "layout": {
+        "row": "Row_0pd78t1",
+        "columns": 4
+      },
+      "id": "Field_1w8si1u",
+      "key": "field_1ufd5l4"
+    }
+  ],
+  "schemaVersion": 9,
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "126db16"
+  },
+  "type": "default",
+  "id": "Form_5cb787dc-7b34-4d79-947a-572bcd63ee6c",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0"
+}

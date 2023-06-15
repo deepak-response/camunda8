@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Web Modeler" exporterVersion="f804007" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.2.0" camunda:diagramRelationId="353a5c79-536f-4648-97ba-a1aa60b94b3e">
+  <bpmn:process id="Process_76e71a50-dfc4-4022-8706-155398a5c7a6" isExecutable="true">
+    <bpmn:extensionElements>
+      <zeebe:userTaskForm id="userTaskForm_29efk6l">{
+  "components": [
+    {
+      "label": "First Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1xjxol1",
+        "columns": null
+      },
+      "id": "Field_0m0yu5e",
+      "key": "firstName",
+      "description": "Enter Maiden Name",
+      "validate": {
+        "required": true,
+        "maxLength": 20
+      }
+    },
+    {
+      "label": "Last Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1xjxol1",
+        "columns": null
+      },
+      "id": "Field_0duroqt",
+      "key": "lastName"
+    },
+    {
+      "label": "Salary",
+      "type": "number",
+      "layout": {
+        "row": "Row_18lbpse",
+        "columns": null
+      },
+      "id": "Field_1tx2b56",
+      "key": "salary",
+      "description": "Gross Income (INR)",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Age",
+      "type": "number",
+      "layout": {
+        "row": "Row_18lbpse",
+        "columns": null
+      },
+      "id": "Field_1map21u",
+      "key": "age",
+      "description": "Yrs.",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "values": [
+        {
+          "label": "India",
+          "value": "IND"
+        },
+        {
+          "label": "Expat",
+          "value": "EXP"
+        }
+      ],
+      "label": "Nationality",
+      "type": "select",
+      "layout": {
+        "row": "Row_1vnu6dx",
+        "columns": null
+      },
+      "id": "Field_1eggp1d",
+      "key": "nationality",
+      "defaultValue": "value",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "values": [
+        {
+          "label": "Yes",
+          "value": "true"
+        },
+        {
+          "label": "No",
+          "value": "false"
+        }
+      ],
+      "label": "Are you new Customer",
+      "type": "radio",
+      "layout": {
+        "row": "Row_0k2gdkl",
+        "columns": null
+      },
+      "id": "Field_0t2873y",
+      "key": "isNewCustomer",
+      "defaultValue": "false"
+    }
+  ],
+  "schemaVersion": 9,
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "126db16"
+  },
+  "type": "default",
+  "id": "Form_5cb787dc-7b34-4d79-947a-572bcd63ee6c",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0"
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_3fm8e3t">{
+  "components": [
+    {
+      "label": "First Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1xjxol1",
+        "columns": null
+      },
+      "id": "Field_0m0yu5e",
+      "key": "firstName",
+      "description": "Enter Maiden Name",
+      "validate": {
+        "required": true,
+        "maxLength": 20
+      },
+      "disabled": true,
+      "readonly": false
+    },
+    {
+      "label": "Last Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1xjxol1",
+        "columns": null
+      },
+      "id": "Field_0duroqt",
+      "key": "lastName",
+      "readonly": false,
+      "disabled": true
+    },
+    {
+      "label": "Salary",
+      "type": "number",
+      "layout": {
+        "row": "Row_18lbpse",
+        "columns": null
+      },
+      "id": "Field_1tx2b56",
+      "key": "salary",
+      "description": "Gross Income (INR)",
+      "validate": {
+        "required": true
+      },
+      "readonly": false,
+      "disabled": true
+    },
+    {
+      "label": "Age",
+      "type": "number",
+      "layout": {
+        "row": "Row_18lbpse",
+        "columns": null
+      },
+      "id": "Field_1map21u",
+      "key": "age",
+      "description": "Yrs.",
+      "validate": {
+        "required": true
+      },
+      "readonly": false,
+      "disabled": true
+    },
+    {
+      "values": [
+        {
+          "label": "India",
+          "value": "IND"
+        },
+        {
+          "label": "Expat",
+          "value": "EXP"
+        }
+      ],
+      "label": "Nationality",
+      "type": "select",
+      "layout": {
+        "row": "Row_1vnu6dx",
+        "columns": null
+      },
+      "id": "Field_1eggp1d",
+      "key": "nationality",
+      "defaultValue": "value",
+      "validate": {
+        "required": true
+      },
+      "readonly": false,
+      "disabled": true
+    },
+    {
+      "values": [
+        {
+          "label": "Yes",
+          "value": "true"
+        },
+        {
+          "label": "No",
+          "value": "false"
+        }
+      ],
+      "label": "Are you new Customer",
+      "type": "radio",
+      "layout": {
+        "row": "Row_0k2gdkl",
+        "columns": null
+      },
+      "id": "Field_0t2873y",
+      "key": "isNewCustomer",
+      "defaultValue": "false",
+      "readonly": false,
+      "disabled": true
+    },
+    {
+      "values": [
+        {
+          "label": "Approve",
+          "value": "approve"
+        },
+        {
+          "label": "Reject",
+          "value": "reject"
+        }
+      ],
+      "label": "Review Outcome",
+      "type": "radio",
+      "layout": {
+        "row": "Row_0k2gdkl",
+        "columns": null
+      },
+      "id": "Field_05jm44q",
+      "key": "reviewOutcome",
+      "defaultValue": "value"
+    },
+    {
+      "label": "Comments",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_17wa2da",
+        "columns": null
+      },
+      "id": "Field_1b4tinc",
+      "key": "comments"
+    },
+    {
+      "action": "submit",
+      "label": "Submit",
+      "type": "button",
+      "layout": {
+        "row": "Row_0pd78t1",
+        "columns": 4
+      },
+      "id": "Field_1w8si1u",
+      "key": "field_1ufd5l4"
+    }
+  ],
+  "schemaVersion": 9,
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "126db16"
+  },
+  "type": "default",
+  "id": "Form_5cb787dc-7b34-4d79-947a-572bcd63ee6c",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0"
+}</zeebe:userTaskForm>
+    </bpmn:extensionElements>
+    <bpmn:startEvent id="StartEvent_1" name="Start Process">
+      <bpmn:outgoing>Flow_024xvtv</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_024xvtv" sourceRef="StartEvent_1" targetRef="getCustomerDetailsTask" />
+    <bpmn:userTask id="getCustomerDetailsTask" name="Get Customer Details">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_29efk6l" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_024xvtv</bpmn:incoming>
+      <bpmn:outgoing>Flow_1hlf8sw</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="Gateway_0ho392y" name="Check Min Salary?" default="Flow_088bzxe">
+      <bpmn:incoming>Flow_1hlf8sw</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ry5mrt</bpmn:outgoing>
+      <bpmn:outgoing>Flow_088bzxe</bpmn:outgoing>
+      <bpmn:outgoing>Flow_11rtrb8</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1hlf8sw" sourceRef="getCustomerDetailsTask" targetRef="Gateway_0ho392y" />
+    <bpmn:sequenceFlow id="Flow_1ry5mrt" name="Equals Threshold Salary" sourceRef="Gateway_0ho392y" targetRef="Activity_1ustufd">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=salary=5000</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:endEvent id="Event_1rc698h" name="Reject">
+      <bpmn:incoming>Flow_088bzxe</bpmn:incoming>
+      <bpmn:incoming>Flow_1d15uh4</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_088bzxe" name="lesser than threshold Salary" sourceRef="Gateway_0ho392y" targetRef="Event_1rc698h" />
+    <bpmn:sequenceFlow id="Flow_0n89o59" sourceRef="Activity_1ustufd" targetRef="check_outcome" />
+    <bpmn:userTask id="Activity_1ustufd" name="Review Customer Details">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_3fm8e3t" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1ry5mrt</bpmn:incoming>
+      <bpmn:outgoing>Flow_0n89o59</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="Event_0281s8m" name="Approved">
+      <bpmn:incoming>Flow_11rtrb8</bpmn:incoming>
+      <bpmn:incoming>Flow_0iz115e</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_11rtrb8" name="More than Threshold Salary" sourceRef="Gateway_0ho392y" targetRef="Event_0281s8m">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=salary&gt;5000</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:exclusiveGateway id="check_outcome" name="Check Outcome">
+      <bpmn:incoming>Flow_0n89o59</bpmn:incoming>
+      <bpmn:outgoing>Flow_0iz115e</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1d15uh4</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0iz115e" name="approve" sourceRef="check_outcome" targetRef="Event_0281s8m">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=reviewOutcome="approve"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1d15uh4" name="Reject" sourceRef="check_outcome" targetRef="Event_1rc698h">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=reviewOutcome="reject"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:textAnnotation id="TextAnnotation_1x6k14s">
+      <bpmn:text>Threshold Salary: 5000 INR</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1h3oj97" sourceRef="getCustomerDetailsTask" targetRef="TextAnnotation_1x6k14s" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_76e71a50-dfc4-4022-8706-155398a5c7a6">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="150" y="310" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="135" y="353" width="67" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0o7ilwz_di" bpmnElement="getCustomerDetailsTask">
+        <dc:Bounds x="240" y="288" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0ho392y_di" bpmnElement="Gateway_0ho392y" isMarkerVisible="true">
+        <dc:Bounds x="435" y="303" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="404" y="353" width="52" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1rc698h_di" bpmnElement="Event_1rc698h">
+        <dc:Bounds x="822" y="522" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="824" y="565" width="32" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1o0c4n6_di" bpmnElement="Activity_1ustufd">
+        <dc:Bounds x="590" y="288" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0281s8m_di" bpmnElement="Event_0281s8m">
+        <dc:Bounds x="822" y="112" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="816" y="88" width="48" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0lnhjt5_di" bpmnElement="check_outcome" isMarkerVisible="true">
+        <dc:Bounds x="815" y="303" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="749.5" y="343" width="79" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_1x6k14s_di" bpmnElement="TextAnnotation_1x6k14s">
+        <dc:Bounds x="280" y="180" width="100" height="55" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_024xvtv_di" bpmnElement="Flow_024xvtv">
+        <di:waypoint x="186" y="328" />
+        <di:waypoint x="240" y="328" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1hlf8sw_di" bpmnElement="Flow_1hlf8sw">
+        <di:waypoint x="340" y="328" />
+        <di:waypoint x="435" y="328" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ry5mrt_di" bpmnElement="Flow_1ry5mrt">
+        <di:waypoint x="485" y="328" />
+        <di:waypoint x="590" y="328" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="497" y="336" width="86" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_088bzxe_di" bpmnElement="Flow_088bzxe">
+        <di:waypoint x="460" y="353" />
+        <di:waypoint x="460" y="540" />
+        <di:waypoint x="822" y="540" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="500" y="506" width="80" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0n89o59_di" bpmnElement="Flow_0n89o59">
+        <di:waypoint x="690" y="328" />
+        <di:waypoint x="815" y="328" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_11rtrb8_di" bpmnElement="Flow_11rtrb8">
+        <di:waypoint x="460" y="303" />
+        <di:waypoint x="460" y="130" />
+        <di:waypoint x="822" y="130" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="518" y="96" width="84" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0iz115e_di" bpmnElement="Flow_0iz115e">
+        <di:waypoint x="840" y="303" />
+        <di:waypoint x="840" y="148" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="835" y="223" width="40" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1d15uh4_di" bpmnElement="Flow_1d15uh4">
+        <di:waypoint x="840" y="353" />
+        <di:waypoint x="840" y="522" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="840" y="435" width="32" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1h3oj97_di" bpmnElement="Association_1h3oj97">
+        <di:waypoint x="300" y="288" />
+        <di:waypoint x="313" y="235" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
