@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.5</version>
+		<version>3.2.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>otc.camunda</groupId>
@@ -14,7 +14,7 @@
 	<name>worker</name>
 	<description>Camunda Cloud Order to Cash Worker</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -37,8 +37,9 @@
 		<dependency>
 			<groupId>io.camunda</groupId>
 			<artifactId>spring-zeebe-starter</artifactId>
-			<version>8.1.3</version>
+			<version>8.5.9</version>
 		</dependency>
+
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -66,5 +67,13 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<repositories>
+		<repository>
+			<id>camunda-bpm</id>
+			<url>https://artifacts.camunda.com/artifactory/public</url>
+		</repository>
+	</repositories>
+
 
 </project>
