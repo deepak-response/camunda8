@@ -30,6 +30,10 @@ public class WorkerApplication {
 	static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 	static ConsoleHandler handler = new ConsoleHandler();
 
+	// Inject the ZeebeClient (configured via application.properties for SaaS)
+	@Autowired
+	private ZeebeClient zeebeClient;
+
 	public static void main(String[] args) {
 		SpringApplication.run(WorkerApplication.class, args);
 		logger.setLevel(Level.ALL);
@@ -41,19 +45,55 @@ public class WorkerApplication {
 	public void chargeServiceTask(final JobClient client, final ActivatedJob job) {
 		logger.info("Executing Service Task for Charge Credit Card as learning module...");
 	}
+
+	@ZeebeWorker(type = "demo_script_task", autoComplete = true)
+	public void demoScriptTask(final JobClient client, final ActivatedJob job) {
+		logger.info("Executing Script Task for Implementation type as - Job Worker");
+	}
 	@ZeebeWorker(type = "demo_service_task", autoComplete = true)
 	public void demoServiceTask(final JobClient client, final ActivatedJob job, @ZeebeVariable String full_name) {
 		logger.info("Retrieving details for person " + full_name + " for demo workflow application...");
 	}
 
+	//Headers allow static metadata to be set for a Zeebe job.
+	//They do not change dynamically but can be used to configure workers.
 	@ZeebeWorker(type = "get_customer_details", autoComplete = true)
-	public Map<String,Object> getCustomerDetails(final JobClient client, final ActivatedJob job, @ZeebeVariable String firstName, @ZeebeVariable String lastName) {
-		logger.info("Retrieving details for person " + firstName + " for demo workflow application...");
-		logger.info("Retrieving details for person " + lastName + " for demo workflow application...");
-		String editName = firstName+lastName;
-		logger.info("Retrieving details for person " + editName + " for demo workflow application...");
+	public Map<String, Object> getCustomerDetails(final JobClient client, final ActivatedJob job,
+												  @ZeebeVariable String firstName,
+												  @ZeebeVariable String lastName,
+												  @ZeebeVariable Integer age) {  // Fetching customerAge
+
+		// Retrieve header values from the job metadata
+		Map<String, String> headers = job.getCustomHeaders();
+		String retryCount = headers.getOrDefault("retryCount", "Not Set");
+		String timeout = headers.getOrDefault("timeout", "Not Set");
+
+		// Log header values
+		logger.info("Header - Retry Count: " + retryCount);
+		logger.info("Header - Timeout: " + timeout);
+
+		// Log process variables
+		logger.info("Retrieving details for person " + firstName + " " + lastName + " for demo workflow application...");
+
+		String fullName = firstName + " " + lastName;
+
+		// Determine citizen category based on age
+		String citizenCategory;
+		if (age < 18) {
+			citizenCategory = "Youth";
+		} else if (age >= 18 && age <= 60) {
+			citizenCategory = "Adult";
+		} else {
+			citizenCategory = "Senior Citizen";
+		}
+
+		logger.info("Customer Age: " + age + ", Category: " + citizenCategory);
+
+		// Return values to the process
 		HashMap<String, Object> variables = new HashMap<>();
-		variables.put("fullName",editName);
+		variables.put("fullName", fullName);
+		variables.put("citizenCategory", citizenCategory); // New variable added
+
 		return variables;
 	}
 
@@ -86,6 +126,19 @@ public class WorkerApplication {
 		logger.info("Retrieving Recovery Certificate " + recovery_certificate_uuid + " from external database...");
 		logger.info("Retrieving contact details for person " + person_uuid + "from external database...");
 		logger.info("Sending Recovery Certificate to person " + person_uuid + ". Enjoy that ice-cream!");
+	}
+
+	@ZeebeWorker(type = "publish-message-cancelOrder", autoComplete = true)
+	public void publishMessage(
+			@ZeebeVariable String orderId) {
+
+		zeebeClient.newPublishMessageCommand()
+				.messageName("cancel_order")
+				.correlationKey(orderId)
+				.send()
+				.join();
+
+		logger.info("Published cancel_order message for orderId: " + orderId);
 	}
 
 	@ZeebeWorker(type = "multi_instance_notification", autoComplete = true)
