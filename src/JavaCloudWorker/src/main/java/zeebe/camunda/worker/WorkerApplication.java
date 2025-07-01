@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
@@ -25,12 +26,12 @@ import java.util.logging.Logger;
 
 @SpringBootApplication
 @EnableZeebeClient
-@RestController
+@ComponentScan("zeebe.camunda.worker")
 public class WorkerApplication {
 	static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 	static ConsoleHandler handler = new ConsoleHandler();
 
-	// Inject the ZeebeClient (configured via application.properties for SaaS)
+	// Inject the ZeebeClient (configured via application.yamnl for SaaS)
 	@Autowired
 	private ZeebeClient zeebeClient;
 
