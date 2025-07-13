@@ -16,6 +16,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -146,4 +147,47 @@ public class WorkerApplication {
 	public void multiInstanceNotification(final JobClient client, final ActivatedJob job) {
 		logger.info("Executing the Service Task ...");
 	}
+
+	@ZeebeWorker(type = "generate-loan-id")
+	public void generateLoanId(final JobClient client, final ActivatedJob job) {
+		logger.info("Executing the Service Task to generate Loan ID...");
+		String loanId = "LR-" + System.currentTimeMillis();
+		client.newCompleteCommand(job.getKey())
+				.variables(Map.of("loanId", loanId))
+				.send()
+				.join();
+		logger.info("loanId generated "+loanId);
+
+	}
+
+
+	@ZeebeWorker(type = "validate_email_address")
+	public void validateEmailAddress(final JobClient client, final ActivatedJob job, @ZeebeVariable String email_address) {
+		logger.info("Validating email address: " + email_address);
+
+		boolean isValid = email_address != null && email_address.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$");
+
+		if (!isValid) {
+			String errorMessage = "Invalid email address format for: " + email_address;
+			logger.warning(errorMessage);
+
+			// Send BPMN error manually using client (compatible with 8.5.9)
+			client.newThrowErrorCommand(job.getKey())
+					.errorCode("WRONG_EMAIL_DETAILS")
+					.errorMessage(errorMessage)
+					.send()
+					.join();
+
+			return; // do not proceed to complete
+		}
+
+		logger.info("Email address is valid: " + email_address);
+
+		// Complete the job if email is valid
+		client.newCompleteCommand(job.getKey())
+				.send()
+				.join();
+	}
+
+
 }
